@@ -1,0 +1,68 @@
+192.168.1.0/24
+
+Administration - 31
+Designers - 19
+Servers - 10
+Marketing - 9
+Guests - 7
+
+
+1. Administration
+adres podsieci: 192.168.1.0
+pierwszy adres hosta: 192.168.1.1
+ostatni adres hosta: 192.168.1.62
+adres broadcast: 192.168.1.63
+ilość hostów: 62
+nadwyżka ilości hostów (względem minimalnej ilości wymaganych hostów): 42
+nadwyżka ilości hostów (względem over-provisioningu): 31
+
+2. Designers
+adres podsieci:
+pierwszy adres hosta:
+ostatni adres hosta:
+adres broadcast:
+ilość hostów:
+nadwyżka ilości hostów (względem minimalnej ilości wymaganych hostów):
+nadwyżka ilości hostów (względem over-provisioningu):
+
+3. Servers
+adres podsieci:
+pierwszy adres hosta:
+ostatni adres hosta:
+adres broadcast:
+ilość hostów:
+nadwyżka ilości hostów (względem minimalnej ilości wymaganych hostów):
+nadwyżka ilości hostów (względem over-provisioningu):
+
+4. Marketing
+adres podsieci:
+pierwszy adres hosta:
+ostatni adres hosta:
+adres broadcast:
+ilość hostów:
+nadwyżka ilości hostów (względem minimalnej ilości wymaganych hostów):
+nadwyżka ilości hostów (względem over-provisioningu):
+
+5. Guests
+adres podsieci:
+pierwszy adres hosta:
+ostatni adres hosta:
+adres broadcast:
+ilość hostów:
+nadwyżka ilości hostów (względem minimalnej ilości wymaganych hostów):
+nadwyżka ilości hostów (względem over-provisioningu):
+
+Drzewko:
+192.168.1.0/24 (254):
+    - 192.168.1.0/25 (126):
+        - 192.168.1.0/26 (Administration, 62) 
+        - 192.168.1.64/26 (62):
+            - 192.168.1.64/27 (Designers, 30)
+            - 192.168.1.96/27 (30):
+                - 192.168.1.96/28 (Servers, 14)
+                - 192.168.1.112/28 (Marketing, 14)
+    - 192.168.1.128/25 (126):
+        - 192.168.1.192/26 (62):
+            - 192.168.1.160/27 (30):
+                - 192.168.1.144/28 (14)
+                - 192.168.1.128/28 (Guests, 14)
