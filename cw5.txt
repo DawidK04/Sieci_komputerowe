@@ -1,0 +1,135 @@
+1.
+  Żródło: ip -br link | awk '{print $1 "\t" $2}'
+  Odpowiedź: 
+    lo	UNKNOWN
+    enp0s3	UP
+
+2.
+  Żródło: ip route, ip neigh
+  Odpowiedź: 52:55:0a:00:02:02
+  
+3.
+  Żródło: ip link
+  Odpowiedź: 
+    sudo ip link set dev enp0s3 down
+    sudo ip link set dev enp0s3 address 08:00:27:11:22:33
+    sudo ip link set dev enp0s3 up
+
+    sudo ip link set dev eth0 down
+    sudo ip link set dev eth0 address 08:00:27:11:22:33
+    sudo ip link set dev eth0 up
+
+4.
+  Żródło: nmap -sn 10.0.2.0/24
+  Odpowiedź: 
+    Starting Nmap 7.95 ( https://nmap.org ) at 2026-04-08 16:32 CEST
+    Nmap scan report for szefu-VirtualBox (10.0.2.15)
+    Host is up (0.0040s latency).
+    Nmap done: 256 IP addresses (1 host up) scanned in 43.76 seconds
+
+5. 
+  Żródło: nmap -p 22 --open 10.0.2.0/24
+  Odpowiedź: 
+    Starting Nmap 7.95 ( https://nmap.org ) at 2026-04-08 16:36 CEST
+    Nmap done: 256 IP addresses (2 hosts up) scanned in 52.36 seconds
+
+6.
+  Żródło: nmap -p- 127.0.0.1
+  Odpowiedź:
+    PORT    STATE SERVICE
+    631/tcp open  ipp
+
+    Nmap done: 1 IP address (1 host up) scanned in 1.29 seconds
+
+7. 
+  Żródło: sudo ss -tulnp
+  Odpowiedź:
+    Netid   State    Recv-Q   Send-Q     Local Address:Port      Peer Address:Port  Process                                                                         
+    udp     UNCONN   0        0                0.0.0.0:5353           0.0.0.0:*      users:(("avahi-daemon",pid=86623,fd=12))                                       
+    udp     UNCONN   0        0             127.0.0.54:53             0.0.0.0:*      users:(("systemd-resolve",pid=90986,fd=16))                                    
+    udp     UNCONN   0        0          127.0.0.53%lo:53             0.0.0.0:*      users:(("systemd-resolve",pid=90986,fd=14))                                    
+    udp     UNCONN   0        0                0.0.0.0:57998          0.0.0.0:*      users:(("avahi-daemon",pid=86623,fd=14))                                       
+    udp     UNCONN   0        0                   [::]:5353              [::]:*      users:(("avahi-daemon",pid=86623,fd=13))                                       
+    udp     UNCONN   0        0                   [::]:57886             [::]:*      users:(("avahi-daemon",pid=86623,fd=15))                                       
+    tcp     LISTEN   0        4096          127.0.0.54:53             0.0.0.0:*      users:(("systemd-resolve",pid=90986,fd=17))                                    
+    tcp     LISTEN   0        4096       127.0.0.53%lo:53             0.0.0.0:*      users:(("systemd-resolve",pid=90986,fd=15))                                    
+    tcp     LISTEN   0        4096           127.0.0.1:631            0.0.0.0:*      users:(("cupsd",pid=87984,fd=7))                                               
+    tcp     LISTEN   0        4096               [::1]:631               [::]:*      users:(("cupsd",pid=87984,fd=6))   
+  
+8.
+  Żródło: ip route
+  Odpowiedź: default via 10.0.2.2 dev enp0s3 proto dhcp src 10.0.2.15 metric 100 
+  
+9.
+  Żródło: traceroute kosmatka.pl
+  Odpowiedź:
+    traceroute to kosmatka.pl (217.28.148.190), 30 hops max, 60 byte packets
+     1  _gateway (10.0.2.2)  7.000 ms  6.000 ms  0.000 ms
+     2  * * *
+     3  * * *
+     4  * * *
+     5  * * *
+     6  * * *
+     7  * * *
+     8  * * *
+     9  * * *
+    10  * * *
+    11  * * *
+    12  * * *
+    13  * * *
+    14  * * *
+    15  * * *
+    16  * * *
+    17  * * *
+    18  * * *
+    19  * * *
+    20  * * *
+    21  * * *
+    22  * * *
+    23  * * *
+    24  * * *
+    25  * * *
+    26  * * *
+    27  * * *
+    28  * * *
+    29  * * *
+    30  * * *
+
+10.
+  Żródło: cat /etc/resolv.conf
+  Odpowiedź: 127.0.0.53
+  
+11.
+  Żródło: cat /etc/hosts
+  Odpowiedź: 
+    127.0.0.1 localhost
+    127.0.1.1 szefu-VirtualBox
+    
+    # The following lines are desirable for IPv6 capable hosts
+    ::1     ip6-localhost ip6-loopback
+    fe00::0 ip6-localnet
+    ff00::0 ip6-mcastprefix
+    ff02::1 ip6-allnodes
+    ff02::2 ip6-allrouters
+
+12.
+  Żródło: dig @8.8.8.8 kosmatka.pl MX
+  Odpowiedź:
+    ;; ANSWER SECTION:
+    kosmatka.pl.		14035	IN	MX	10 mx2.privateemail.com.
+    kosmatka.pl.		14035	IN	MX	10 mx1.privateemail.com.
+
+13. 
+  Żródło: dig google.pl AAAA +short
+  Odpowiedź: 2a00:1450:4025:804::5e
+  
+14.
+  Żródło: whois kosmatka.pl
+  Odpowiedź: 
+    created:                        2022.12.02 12:27:10
+    last modified:                  2022.12.02 12:33:53
+    renewal date:                   2032.12.02 12:27:10
+
+15.
+  Żródło: https://dns.pl/lista_domen_usunietych
+  Odpowiedź:
