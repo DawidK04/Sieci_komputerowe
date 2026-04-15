@@ -5,22 +5,23 @@
     enp0s3	UP
 
 2.
-  Żródło: ip route, ip neigh
-  Odpowiedź: 52:55:0a:00:02:02
+  Żródło: ip route show default, ip neigh show 10.0.2.2
+  Odpowiedź: 
+    default via 10.0.2.2 dev enp0s3 proto dhcp src 10.0.2.15 metric 100 
+    10.0.2.2 dev enp0s3 lladdr 52:54:00:12:35:02 STALE
   
 3.
-  Żródło: ip link
-  Odpowiedź: 
+  Żródło: 
     sudo ip link set dev enp0s3 down
     sudo ip link set dev enp0s3 address 08:00:27:11:22:33
     sudo ip link set dev enp0s3 up
-
-    sudo ip link set dev eth0 down
-    sudo ip link set dev eth0 address 08:00:27:11:22:33
-    sudo ip link set dev eth0 up
+  Odpowiedź: 
+    ip link show enp0s3
 
 4.
-  Żródło: nmap -sn 10.0.2.0/24
+  Żródło: 
+    ip addr show
+    nmap -sn 10.0.2.0/24
   Odpowiedź: 
     Starting Nmap 7.95 ( https://nmap.org ) at 2026-04-08 16:32 CEST
     Nmap scan report for szefu-VirtualBox (10.0.2.15)
